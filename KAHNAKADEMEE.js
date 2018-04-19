@@ -153,6 +153,6 @@ function runDialog() {
     $('#dialog').dialog();
 }
 
-setTimeout(runAnswers, 5000);
-setTimeout(appendAnswerButton, 5000);
+setInterval(runAnswers, 5000);
+setInterval(appendAnswerButton, 5000);
 alert("success");
