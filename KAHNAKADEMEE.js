@@ -28,8 +28,6 @@ var processedAnswers = 0;
     };
 })(XMLHttpRequest.prototype.open);
 
-setTimeout(runAnswers, 5000);
-setTimeout(appendAnswerButton, 5000);
 
 function appendAnswerButton() {
     $('#next-question-button').click(function() {
@@ -161,3 +159,6 @@ function runDialog() {
     $('#hintsarea').append('<div id="dialog" title="Answer Data"><pre>' + JSON.stringify(questionData.question.widgets, null, 2) + '</pre></div>');
     $('#dialog').dialog();
 }
+
+setTimeout(runAnswers, 5000);
+setTimeout(appendAnswerButton, 5000);
