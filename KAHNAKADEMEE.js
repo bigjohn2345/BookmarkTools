@@ -1,13 +1,3 @@
-// ==UserScript==
-// @name         Khan Answers
-// @namespace    http://dothething.net/
-// @version      20160317
-// @description  Get all the answers to Khan Academy worksets
-// @author       You
-// @match        https://www.khanacademy.org/*
-// @grant        none
-// ==/UserScript==
-
 var firstCall = true;
 var questionData = null;
 var questionAnswers = [];
@@ -29,11 +19,6 @@ var processedAnswers = 0;
 })(XMLHttpRequest.prototype.open);
 
 
-function appendAnswerButton() {
-    $('#next-question-button').click(function() {
-        runAnswers();
-    });
-}
 
 function runAnswers() {
     $('#hintsarea').append("<button id=\"noAnswersButton\">Answers not showing? Click here</button>");
@@ -154,5 +139,5 @@ function runDialog() {
 }
 
 setInterval(runAnswers, 5000);
-setInterval(appendAnswerButton, 5000);
+setInterval(appendAnswer, 5000);
 alert("success");
