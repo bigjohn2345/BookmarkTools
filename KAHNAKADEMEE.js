@@ -15,7 +15,7 @@ var processedAnswers = 0;
 
 (function(open) {
     XMLHttpRequest.prototype.open = function(method, url, async, user, pass) {
-        if(url.indexOf("/api/internal/user/exercises/") > -1 && firstCall) {
+        if(url.indexOf("/api/v1/user/exercises/") > -1 && firstCall) {
             firstCall = false;
             $.get(url, function(data) {
                 questionData = JSON.parse(data.itemData);
