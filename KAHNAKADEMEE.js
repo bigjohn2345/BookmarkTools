@@ -46,21 +46,19 @@ function runAnswers() {
     });
     processedAnswers += 1;
     $('#hintsarea').append("<p><b>ANSWERS</b></p>");
-    // Simple text input answers
     var i = 0;
     try {
         console.log(parseInt(ObjectLength(questionData.question.widgets)));
         var correctAnswers = "";
         for(i = 0; i < parseInt(ObjectLength(questionData.question.widgets)); i++) {
-            //console.log(questionData.question.widgets['input-number ' + (i + 1)].options.value);
+            console.log(questionData.question.widgets['input-number ' + (i + 1)].options.value);
             var answer = (questionData.question.widgets['input-number ' + (i + 1)].options.value).toString();
             appendAnswer(i, "Input", answer);
         }
     } catch(err) {}
-    // Matcher problems
     try {
         for(i = 0; i < parseInt(ObjectLength(questionData.question.widgets)); i++) {
-            //console.log(questionData.question.widgets['matcher ' + (i + 1)].options.right); // An array of values
+            console.log(questionData.question.widgets['matcher ' + (i + 1)].options.right);
             var answers = questionData.question.widgets['matcher ' + (i + 1)].options.right;
             var correctAnswers = "";
             answers.forEach(function(answers, index, array) {
@@ -69,10 +67,9 @@ function runAnswers() {
             appendAnswer(i, "Matcher", correctAnswers);
         }
     } catch(err) {}
-    // Sorter problems
     try {
         for(i = 0; i < parseInt(ObjectLength(questionData.question.widgets)); i++) {
-            //console.log(questionData.question.widgets['matcher ' + (i + 1)].options.right); // An array of values
+            console.log(questionData.question.widgets['matcher ' + (i + 1)].options.right);
             var answers = questionData.question.widgets['sorter ' + (i + 1)].options.correct;
             var correctAnswers = "<br>";
             answers.forEach(function(answers, index, array) {
@@ -81,10 +78,9 @@ function runAnswers() {
             appendAnswer(i, "Sorter", correctAnswers);
         }
     } catch(err) {}
-    // Expression answers (type 1)
     try {
         for(i = 0; i < parseInt(ObjectLength(questionData.question.widgets)); i++) {
-            //console.log(questionData.question.widgets['expression ' + (i + 1)].options.answerForms);
+            console.log(questionData.question.widgets['expression ' + (i + 1)].options.answerForms);
             var expressionAnswers = questionData.question.widgets['expression ' + (i + 1)].options.answerForms;
             expressionAnswers.forEach(function(answerArray, index, array) {
                 appendAnswer(i, "Expression", answerArray.value);
@@ -92,15 +88,13 @@ function runAnswers() {
 
         }
     } catch(err) {}
-    // Expression answers (type 2)
     try {
         for(i = 0; i < parseInt(ObjectLength(questionData.question.widgets)); i++) {
-            //console.log(questionData.question.widgets['expression ' + (i + 1)].options.value);
+            console.log(questionData.question.widgets['expression ' + (i + 1)].options.value);
             var expressionAnswers2 = questionData.question.widgets['expression ' + (i + 1)].options;
             appendAnswer(i, "Expression", expressionAnswers2.value);
         }
     } catch(err) {}
-    // Button dropdown answers
     try {
         for(i = 0; i < parseInt(ObjectLength(questionData.question.widgets)); i++) {
             var answersForDropdown = questionData.question.widgets['dropdown ' + (i + 1)].options.choices;
@@ -110,11 +104,10 @@ function runAnswers() {
                     correctAnswers = correctAnswers + answer.content + ', ';
                 }
             });
-            //console.log("Dropdown " + (i + 1) + ": " + correctAnswers);
+            console.log("Dropdown " + (i + 1) + ": " + correctAnswers);
             appendAnswer(i, "Dropdown", correctAnswers);
         }
     } catch(err) {}
-    // Radio or Checkbox answers
     try {
         for(i = 0; i < parseInt(ObjectLength(questionData.question.widgets)); i++) {
             var answersForDropdown = questionData.question.widgets['radio ' + (i + 1)].options.choices;
@@ -124,7 +117,7 @@ function runAnswers() {
                     correctAnswers = correctAnswers + answer.content + ', ';
                 }
             });
-            //console.log("Radio " + (i + 1) + ": " + correctAnswers);
+            console.log("Radio " + (i + 1) + ": " + correctAnswers);
             appendAnswer(i, "Radio/Checkbox", correctAnswers);
         }
     } catch(err) {}
@@ -162,3 +155,4 @@ function runDialog() {
 
 setTimeout(runAnswers, 5000);
 setTimeout(appendAnswerButton, 5000);
+alert("success");
