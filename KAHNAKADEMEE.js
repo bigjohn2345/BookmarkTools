@@ -2,7 +2,6 @@ var reset = confirm("Reset hint mode?");
 
 function ChangeDefs() {
     statefulExerciseManager.props.problemProgress.hintsVisible = 10;
-    statefulExerciseManager.props.problemProgress.answerStatus = "correct";
     console.log("did");
 };
 
