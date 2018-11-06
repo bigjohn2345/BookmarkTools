@@ -13,9 +13,13 @@ window.fetch = function() {
             console.log(rspv.url)
             origFetch(rspv.url)
                 .then(function(response) {
-                    eeeee = response.json()
-                    console.log(eeeee)
+
+                    return response.json();
+                })
+                .then(function(myJson) {
+                    console.log(JSON.stringify(myJson));
                 });
+
         }
     });
     return kickBack
