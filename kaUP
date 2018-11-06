@@ -1,0 +1,22 @@
+var origFetch = window.fetch
+var rtnval
+var kickBack
+var eeeee
+var cckk
+
+var OrigFetch = window.fetch;
+window.fetch = function() {
+    rtnval = origFetch.apply(this, arguments)
+    kickBack = rtnval
+    rtnval.then(function(rspv) {
+        if (rspv.url.indexOf("/assessment_item?") != "-1") {
+            console.log(rspv.url)
+            origFetch(rspv.url)
+                .then(function(response) {
+                    eeeee = response.json()
+                    console.log(eeeee)
+                });
+        }
+    });
+    return kickBack
+}
